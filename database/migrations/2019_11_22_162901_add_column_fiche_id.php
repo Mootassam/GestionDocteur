@@ -16,7 +16,7 @@ class AddColumnFicheId extends Migration
         Schema::table('appointments', function (Blueprint $table) {
 
             $table->unsignedBigInteger('fiche_id')->after('id'); 
-            $table->foreign('fiche_id')->references('id')->on('fiche_rendez_vous'); 
+            $table->foreign('fiche_id')->references('id')->on('Fiche'); 
             //
         });
     }

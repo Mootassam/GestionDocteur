@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJoursdutravailTable extends Migration
+class CreateSocialProvidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateJoursdutravailTable extends Migration
      */
     public function up()
     {
-        Schema::create('travaille', function (Blueprint $table) {
+        Schema::create('social_providers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->time('heurDeb') ;
-            $table->time('heurFin'); 
-            $table->text('jours') ; 
+            $table->integer('user_id')->unsigned()->references('id')->on('users'); 
+            $table->string('provider_id'); 
+            $table->string('provider'); 
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateJoursdutravailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('joursdetravaill');
+        Schema::dropIfExists('social_providers');
     }
 }

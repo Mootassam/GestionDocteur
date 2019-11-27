@@ -8,11 +8,16 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <img  href=" {{asset('hopital.jpg')}}">
 
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
+                background-image: url("img/doctor.jpg");
+                background-repeat:no-repeat;
+                background-position:center center;
+                background-size: cover; 
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -62,8 +67,8 @@
                 margin-bottom: 30px;
             }
         </style>
-    </head>
-    <body>
+    </head >
+    <body  >
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

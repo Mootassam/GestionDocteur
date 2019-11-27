@@ -16,10 +16,40 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+// route pour specialité // 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('GDOCTOR/listSpecial', 'specialController@listSpecial'); 
 Route::post('GDOCTOR/save','specialController@saveList'); 
 route::delete('GDOCTOR/{id}', 'specialController@destroy'); 
+
+// route pour user // 
+route::get('/listprofile', 'UserController@listUser'); 
+route::get('/profile', 'UserController@index'); 
+route::post('chercher' ,'UserController@chercher') ;
+
+// route pour le doctotr // 
+route::get('/addDoctor', 'doctorController@listD'); 
+route::post('store', 'doctorController@store');
+route::get('allmedecin','doctorController@index') ;
+route::post('cherhcerM', 'doctorController@chercher') ;
+
+//route pour le jour de travaille // 
+route::get('jour/index','travailleController@index'); 
+route::post('/addtravaille', 'travailleController@strorejour');
+
+// Route pour le Patient  // 
+Route::get('index', 'patientsController@index' ) ; 
+Route::get('create', 'patientsController@create') ; 
+Route::post('storePatient','patientsController@store') ; 
+Route::DELETE('destroy/{id}', 'patientsController@destroy') ;
+
+// Route pour la fiche de rendez vous // 
+Route::get('fiche/index', 'ficheController@index'); 
+
+
+Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback') ;
+
+    
 
 

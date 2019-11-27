@@ -10,10 +10,18 @@
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/zabuto_calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/gritter/css/jquery.gritter.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-fileupload/bootstrap-fileupload.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-datepicker/css/datepicker.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-daterangepicker/daterangepicker.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-timepicker/compiled/timepicker.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-datetimepicker/datertimepicker.css')}}" />
     <!-- Custom styles for this template -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet">
     <script src="{{asset('lib/chart-master/Chart.js')}}"></script>
+
+
+
     <title>GDOCTOR</title>
 </head>
 <body>
@@ -217,7 +225,21 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="login.html">Logout</a></li>
+
+                  <li>
+                  
+                          <a  class="logout" href="{{ url('/logout') }}"
+                              onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                              Logout
+                          </a>
+
+                          <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                          </form>
+                    
+              
+              
               </ul>
             </div>
           </header>
@@ -230,14 +252,27 @@
             <div id="sidebar" class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                <h5 class="centered">Sam Soffes</h5>
+                <p class="centered"><a href="{{url('profile')}}"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+                <h5 class="centered">{{Auth::user()->name}} </h5>
                 <li class="mt">
                   <a class="active" href="index.html">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                     </a>
                 </li>
+                  <li>
+                  <a href="{{url('allmedecin')}} ">
+                    <i class="fa fa-envelope"></i>
+                    <span>Chercher médecin </span>
+                    <span class="label label-theme pull-right mail-info">2</span>
+                    </a>
+                </li>
+    <li>
+                    <a href="{{url('GDOCTOR/listSpecial')}}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Gérer les spécialités </span>
+                      </a>
+                  </li>
                 <li class="sub-menu">
                   <a href="javascript:;">
                     <i class="fa fa-desktop"></i>
@@ -253,14 +288,14 @@
                 
                 </li>
                 <li class="sub-menu">
-                  <a href="javascript:;">
+                  <a href=" {{url ('listjour')}} ">
                     <i class="fa fa-book"></i>
                     <span>Gérer l’horaire de travail</span>
                     </a>
                 
                 </li>
                 <li class="sub-menu">
-                  <a href="javascript:;">
+                  <a href="{{url('index')}}">
                     <i class="fa fa-tasks"></i>
                     <span>Gérer les dossiers patients</span>
                     </a>
@@ -273,13 +308,7 @@
                     </a>
                
                 </li>
-                <li>
-                  <a href="inbox.html">
-                    <i class="fa fa-envelope"></i>
-                    <span>Chercher médecin </span>
-                    <span class="label label-theme pull-right mail-info">2</span>
-                    </a>
-                </li>
+              
                 <li class="sub-menu">
                   <a href="javascript:;">
                     <i class=" fa fa-bar-chart-o"></i>
@@ -305,12 +334,7 @@
                     <span>Consulter l’état des RDV </span>
                     </a>
                 </li>
-                <li>
-                    <a href="google_maps.html">
-                      <i class="fa fa-map-marker"></i>
-                      <span>Gérer les spécialités </span>
-                      </a>
-                  </li>
+               
                   <li>
                     <a href="google_maps.html">
                       <i class="fa fa-map-marker"></i>
@@ -318,7 +342,7 @@
                       </a>
                   </li>
                   <li>
-                    <a href="google_maps.html">
+                    <a href="{{url('listprofile')}}">
                       <i class="fa fa-map-marker"></i>
                       <span>Gérer le profil </span>
                       </a>
@@ -359,10 +383,22 @@
 <script src="{{asset('lib/jquery.sparkline.js')}}"></script>
 <!--common script for all pages-->
 <script src="{{asset('lib/common-scripts.js')}}"></script>
-<script type="asset('text/javascript" src="{{asset('lib/gritter/js/jquery.gritter.js')}}"></script>
+<script src="{{asset('lib/jquery-ui-1.9.2.custom.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/gritter/js/jquery.gritter.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/gritter-conf.js')}}"></script>
 <!--script for this page-->
 <script src="{{asset('lib/sparkline-chart.js')}}"></script>
 <script src="{{asset('lib/zabuto_calendar.js')}}"></script>
-</body>
+
+<script type="text/javascript" src="{{asset('lib/bootstrap-fileupload/bootstrap-fileupload.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('lib/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/date.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/bootstrap-timepicker/js/bootstrap-timepicker.js')}}"></script>
+
+<script src="{{asset('lib/advanced-form-components.js')}}"></script>
+<script></script>
 </html>

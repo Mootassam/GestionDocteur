@@ -13,7 +13,7 @@ class CreateFicheRendezVousTable extends Migration
      */
     public function up()
     {
-        Schema::create('fiche_rendez_vous', function (Blueprint $table) {
+        Schema::create('Fiche', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('observation'); 
             $table->text('ordonnace') ;
@@ -29,6 +29,6 @@ class CreateFicheRendezVousTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fiche_rendez_vous');
+        Schema::dropIfExists('Fiche');
     }
 }

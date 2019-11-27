@@ -17,13 +17,30 @@
               <div class="form-group">
                 <label class="control-label col-md-3">Ajouter la nouvelle specialités</label>
                 <div class="col-md-4">
-                  <input size="16" name="nom" type="text" value=""   class="form-control">
-               
+                  <input size="16" name="nom" type="text" value="{{old('nom')}}"   class="form-control">
+                  @if ($errors->get('nom'))
+                  @foreach ($errors->get('nom') as $item)
+               <p style="color:red">  {{ $item}} </p>
+                 
+
+                      
+                  @endforeach
+                  @endif
                 </div>
                 <button class="btn btn-success">Ajouter </button>
               </div>
             </form>
        
+            @if(session()->has('error'))
+              <div class="alert alert-danger"> {{session()->get('error')}}</div>
+
+
+            
+            @elseif(session()->has('success'))
+            <div class="alert alert-success">
+             {{ session()->get('success')}}
+            </div>
+            @endif 
        @if (count($list))
            
              
@@ -76,12 +93,7 @@
           <!-- /form-panel -->
         </div>
   
-      <!-- row -->
-      <!--  TIME PICKERS -->
-     
-      <!-- row -->
-    </section>
-    <!-- /wrapper -->
+
   </section>
 
     

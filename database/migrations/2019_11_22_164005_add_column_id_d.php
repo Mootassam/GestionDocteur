@@ -13,7 +13,7 @@ class AddColumnIdD extends Migration
      */
     public function up()
     {
-        Schema::table('joursdetravaill', function (Blueprint $table) {
+        Schema::table('travaille', function (Blueprint $table) {
             $table->unsignedBigInteger('idD') ; 
             $table->foreign('idD')->references('id')->on('doctors') ;
             //
@@ -27,8 +27,8 @@ class AddColumnIdD extends Migration
      */
     public function down()
     {
-        Schema::table('joursdetravaill', function (Blueprint $table) {
-            $table->dropForeign('idD') ; 
+        Schema::table('travaille', function (Blueprint $table) {
+            $table->dropForeign(['idD']) ; 
             //
         });
     }
