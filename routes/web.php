@@ -26,6 +26,7 @@ route::delete('GDOCTOR/{id}', 'specialController@destroy');
 route::get('/listprofile', 'UserController@listUser'); 
 route::get('/profile', 'UserController@index'); 
 route::post('chercher' ,'UserController@chercher') ;
+Route::post('user/store','UserController@store') ; 
 
 // route pour le doctotr // 
 route::get('/addDoctor', 'doctorController@listD'); 
@@ -35,7 +36,7 @@ route::post('cherhcerM', 'doctorController@chercher') ;
 
 //route pour le jour de travaille // 
 route::get('jour/index','travailleController@index'); 
-route::post('/addtravaille', 'travailleController@strorejour');
+route::post('sotre/travaille', 'travailleController@store');
 
 // Route pour le Patient  // 
 Route::get('index', 'patientsController@index' ) ; 

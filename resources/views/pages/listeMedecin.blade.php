@@ -29,7 +29,7 @@
             </form>
 
             @include('pages.addDoctor')
-            <button class="btn btn-info">Ajouter Horraire de travaille </button>
+            @include('pages.addH')
           </div>
        
         </div>

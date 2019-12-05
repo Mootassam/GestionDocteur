@@ -14,8 +14,8 @@ class AddColumnSpecialiteId extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->unsignedBigInteger('specialite_id')->after('password'); 
-            $table->foreign('specialite_id')->references('id')->on('specialites') ; 
+            
+          
                         //
         });
     }
@@ -28,7 +28,7 @@ class AddColumnSpecialiteId extends Migration
     public function down()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->dropForeign('specialite_id');
+       
             //
         });
     }

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Patients;
+use App\Patient;
+
 use Illuminate\Http\Request;
 
 class patientsController extends Controller
@@ -15,7 +16,7 @@ class patientsController extends Controller
     public function index()
 
     {
-        $list = Patients::all(); 
+        $list = Patient::all(); 
      return view('pages.patient',compact('list')) ;
         //
     }
@@ -39,15 +40,14 @@ class patientsController extends Controller
      */
     public function store(Request $request)
     {
-      return  $request->validate([ 'pass' =>'required', ]); 
-        $list = new Patients() ; 
-          $list->name = $request->input('nom'); 
-$list->lastName = $request->input('prenom'); 
-$list->email = $request->input('email'); 
-$list->password = $request->input('pass'); 
-$list->dateNaiss = $request->input('date'); 
-$list->numCNSS = $request->input('cnss'); 
-$list->remeber_token = '25'; 
+  
+            $list = new Patient() ; 
+            $list->name = $request->input('nom'); 
+            $list->lastName = $request->input('prenom'); 
+            $list->email = $request->input('email'); 
+            $list->dateNaiss = $request->input('date'); 
+            $list->numCNSS = $request->input('cnss'); 
+
 
 $list->save(); 
 
@@ -100,7 +100,7 @@ return redirect('index');
     public function destroy($id)
     {
 
-        $list = Patients::find($id) ;
+        $list = Patient::find($id) ;
         $list->delete(); 
         return redirect('index'); 
         

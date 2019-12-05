@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnFicheId extends Migration
+class AddColumnPid extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,11 @@ class AddColumnFicheId extends Migration
     public function up()
     {
         Schema::table('appointments', function (Blueprint $table) {
+            
+              $table->unsignedBigInteger('idD')->after('id'); 
+            $table->foreign('idD')->references('id')->on('doctors');
 
-            $table->unsignedBigInteger('fiche_id')->after('id'); 
-            $table->foreign('fiche_id')->references('id')->on('Fiche'); 
+
             //
         });
     }
@@ -30,7 +32,6 @@ class AddColumnFicheId extends Migration
     {
         Schema::table('appointments', function (Blueprint $table) {
             //
-            $table->dropForeign('fiche_id') ;
         });
     }
 }

@@ -76,18 +76,7 @@
                     
                        
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-4">Password</label>
-                         
-                                <input class="form-control" name="pass" size="16" type="text" value="{{old('pass')}}">
-                                @if ($errors->get('pass'))
-                                @foreach ($errors->get('pass') as $item)
-                             <p style="color:red"> {{$item}}</p>         
-                                @endforeach     
-                            @endif
-                        
-                          
-                            </div>
+                      
                     
                                     <div class="form-group">
                                         <label class="control-label col-md-4">Date de Naissance</label>

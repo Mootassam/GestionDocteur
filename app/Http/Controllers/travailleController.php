@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use id;
+use App\Doctor;
 use App\Travaille;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,8 @@ class travailleController extends Controller
     public function index()
     {
         $list= Travaille::all(); 
-        dd($list); 
+      
+        return view('pages.calendar') ;
         //
     }
 
@@ -26,6 +29,9 @@ class travailleController extends Controller
      */
     public function create()
     {
+        $list= Doctor::all(); 
+
+        return view('pages.addH' ,compact($list)); 
         //
     }
 
@@ -37,6 +43,17 @@ class travailleController extends Controller
      */
     public function store(Request $request)
     {
+        $list = new Travaille(); 
+
+        $list->idD = $request->input('nom'); 
+        $list->heurDeb = $request->input('hd'); 
+        $list->heurFin = $request->input('hf'); 
+        $list->jours = $request->input('jours'); 
+    
+        $list->save(); 
+
+        return redirect ('allmedecin') ;
+        
         //
     }
 

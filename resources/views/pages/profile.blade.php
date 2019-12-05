@@ -18,6 +18,11 @@
              
                    <input class="btn btn-success" type="submit" value="Chercher"> 
                 </form>
+            
+                @include('pages.user.ajouter'); 
+
+
+
               </div>
            
             </div>
@@ -27,6 +32,7 @@
               <thead>
                 <tr>
                   <th><i class="fa fa-bullhorn"></i> Nom</th>
+                       <th><i class="fa fa-bullhorn"></i> Prenom</th>
                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Email</th>
                   <th><i class="fa fa-bookmark"></i> Password</th>
                   <th><i class=" fa fa-edit"></i> date de creation</th>
@@ -35,12 +41,15 @@
               </thead>
               <tbody>
                   @foreach ($list as $item)
-                      
-                 
-                <tr>
+               <tr>
                   <td>
-                    <a href="basic_table.html#"> {{$item->name}} </a>
+                    <a href="basic_table.html#"> {{$item->last_name}} </a>
                   </td>
+                  <td>
+                    <a href="basic_table.html#"> {{$item->first_name}} </a>
+                  </td>
+                  
+
                   <td class="hidden-phone"> {{$item->email}}</td>
                   <td> {{$item->password}} </td>
                   <td><span class="label label-info label-mini"> {{$item->created_at}}</span></td>

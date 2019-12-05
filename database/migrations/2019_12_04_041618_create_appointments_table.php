@@ -16,11 +16,11 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('etat'); 
-            $table->timestamp('appointment_datetime'); 
-            $table->timestamps();
-        
-
             
+
+          
+            
+            $table->timestamps();
         });
     }
 

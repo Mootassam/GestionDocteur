@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnIdD extends Migration
+class CreateTravaillesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class AddColumnIdD extends Migration
      */
     public function up()
     {
-        Schema::table('travaille', function (Blueprint $table) {
-            $table->unsignedBigInteger('idD') ; 
-            $table->foreign('idD')->references('id')->on('doctors') ;
-            //
+        Schema::create('travailles', function (Blueprint $table) {
+
+            $table->bigIncrements('id');
+            $table->time('heurDeb') ;
+            $table->time('heurFin'); 
+            $table->text('jours') ; 
+            $table->timestamps();
+           
         });
     }
 
@@ -27,9 +31,6 @@ class AddColumnIdD extends Migration
      */
     public function down()
     {
-        Schema::table('travaille', function (Blueprint $table) {
-            $table->dropForeign(['idD']) ; 
-            //
-        });
+        Schema::dropIfExists('travailles');
     }
 }

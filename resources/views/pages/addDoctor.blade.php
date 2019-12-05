@@ -71,15 +71,16 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label ">Specialité du doctor</label>
-                               <select name="" class="form-control" id=""></select>
-                                @if(Route::has('addDoctor'))
+                               <select name="spec" class="form-control" id="">
+                            
                                @foreach ($names as $item)
                                    
                     
                                <option value="{{$item->id}}"> {{$item->nom}}</option>
                                          @endforeach
+                                         </select>
                                 </div>
-                                @endif
+                              
                                 <div class="form-group">
                                     <label class="control-label ">tel</label>
                                   

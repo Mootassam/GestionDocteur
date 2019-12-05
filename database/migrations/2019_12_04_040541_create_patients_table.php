@@ -16,12 +16,11 @@ class CreatePatientsTable extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name'); 
-            $table->string('lastName') ;
-            $table->string('email') ;
-            $table->string('password'); 
+            $table->string('lastName'); 
+            $table->string('email'); 
             $table->string('dateNaiss'); 
             $table->string('numCNSS'); 
-            $table->text('remeber_token'); 
+            
             $table->timestamps();
         });
     }

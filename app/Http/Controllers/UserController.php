@@ -24,5 +24,18 @@ if($list){
         }
    
 }
+
+public function store(Request $request){ 
+
+    
+    $request_data = $request->except(['password','password_confirmation', 'permissions']); 
+    $request_data['password'] = bcrypt($request->password); 
+    $user = User::create($request_data); 
+    $user->attachRole('admin'); 
+    $user->syncPermissions($request->permissions) ;
+
+
+
+}
     //
 }

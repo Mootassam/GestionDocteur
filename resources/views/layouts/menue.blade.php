@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-daterangepicker/daterangepicker.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-timepicker/compiled/timepicker.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-datetimepicker/datertimepicker.css')}}" />
+      <link href="{{asset('lib/fullcalendar/bootstrap-fullcalendar.css')}}" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet">
@@ -253,7 +254,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="{{url('profile')}}"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                <h5 class="centered">{{Auth::user()->name}} </h5>
+                <h5 class="centered"> </h5>
                 <li class="mt">
                   <a class="active" href="index.html">
                     <i class="fa fa-dashboard"></i>
@@ -288,7 +289,7 @@
                 
                 </li>
                 <li class="sub-menu">
-                  <a href=" {{url ('listjour')}} ">
+                  <a href=" {{url ('jour/index')}} ">
                     <i class="fa fa-book"></i>
                     <span>Gérer l’horaire de travail</span>
                     </a>
@@ -341,12 +342,18 @@
                       <span>Vérifier les médecins </span>
                       </a>
                   </li>
-                  <li>
-                    <a href="{{url('listprofile')}}">
-                      <i class="fa fa-map-marker"></i>
-                      <span>Gérer le profil </span>
-                      </a>
-                  </li>
+                @if (auth()->user()->hasPermission('read_users'))
+              <li>
+              
+                    
+              
+                <a href="{{url('listprofile')}}">
+                  <i class="fa fa-map-marker"></i>
+                  <span>Gérer le profil </span>
+                  </a>
+                
+              </li>  
+                  @endif
               </ul>
               <!-- sidebar menu end-->
             </div>
@@ -390,15 +397,16 @@
 <script src="{{asset('lib/sparkline-chart.js')}}"></script>
 <script src="{{asset('lib/zabuto_calendar.js')}}"></script>
 
+<script src="{{asset('lib/fullcalendar/fullcalendar.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-fileupload/bootstrap-fileupload.js')}}"></script>
-
 <script type="text/javascript" src="{{asset('lib/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/date.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('lib/bootstrap-timepicker/js/bootstrap-timepicker.js')}}"></script>
+  <script src="{{asset('lib/calendar-conf-events.js')}}"></script>
 
 <script src="{{asset('lib/advanced-form-components.js')}}"></script>
-<script></script>
+ 
 </html>

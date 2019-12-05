@@ -44,23 +44,24 @@ class doctorController extends Controller
         $list->remeber_token='0' ;
         $list->save() ; 
 
-        return redirect ('addDoctor') ;
+        return redirect ('allmedecin') ;
     }
     public function index(){ 
         $list = Doctor::all(); 
-        return view ('pages.listeMedecin', compact('list')); 
+           $names = Specialites::all(); 
+        return view ('pages.listeMedecin', compact('list' ,'names')); 
 
     }
     public function chercher(Request $request){ 
         
     
-   
+    $names = Specialites::all(); 
         $nom = $request->input('nom') ;
       
         
         $list=Doctor::where('name','like','%'.$nom)->get() ; 
 
-        return view ('pages.listeMedecin', compact('list')); 
+        return view ('pages.listeMedecin', compact('list' ,'names')); 
 
 
     }
