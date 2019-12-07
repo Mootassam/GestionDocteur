@@ -8,6 +8,7 @@ return [
            
         ],
          'admin' => [],  
+        
     ],
    
     'permissions_map' => [

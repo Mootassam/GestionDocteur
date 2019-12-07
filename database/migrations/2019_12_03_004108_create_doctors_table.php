@@ -16,6 +16,9 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('special_id'); 
+            $table->foreign('special_id')->references('id')->on('specialites');
+
             $table->string('name'); 
             $table->string('lastname'); 
             $table->text('avatar') ; 
@@ -31,7 +34,7 @@ class CreateDoctorsTable extends Migration
             $table->string('latitude'); 
             $table->string('longitude'); 
             $table->string('remeber_token'); 
-
+            
 
             $table->timestamps();
         });

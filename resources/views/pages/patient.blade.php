@@ -6,8 +6,10 @@
 <div class="row mt">
     <div class="col-md-12">
       <div class="content-panel">
+         @include('pages.messages.msg')
 
-@include('pages.listpatient')
+ @include('pages.listpatient')
               </div></div></div></section></section>
+             
 
 @endsection

@@ -275,9 +275,9 @@
                       </a>
                   </li>
                 <li class="sub-menu">
-                  <a href="javascript:;">
+                  <a href="{{url('fiche/index')}}">
                     <i class="fa fa-desktop"></i>
-                    <span>Gérer les rendez-vous</span>
+                    <span>Gérer Fiche_rendez_vous</span>
                     </a>
               
                 </li>
@@ -330,7 +330,7 @@
                  
                 </li>
                 <li>
-                  <a href="google_maps.html">
+                  <a href="{{url('appointements/index')}}">
                     <i class="fa fa-map-marker"></i>
                     <span>Consulter l’état des RDV </span>
                     </a>
@@ -342,7 +342,7 @@
                       <span>Vérifier les médecins </span>
                       </a>
                   </li>
-                @if (auth()->user()->hasPermission('read_users'))
+          
               <li>
               
                     
@@ -353,7 +353,7 @@
                   </a>
                 
               </li>  
-                  @endif
+                 
               </ul>
               <!-- sidebar menu end-->
             </div>

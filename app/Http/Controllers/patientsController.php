@@ -50,6 +50,7 @@ class patientsController extends Controller
 
 
 $list->save(); 
+session()->flash('success','le Patient a ete ajouter avec success'); 
 
 return redirect('index'); 
 

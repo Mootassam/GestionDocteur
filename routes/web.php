@@ -25,8 +25,9 @@ route::delete('GDOCTOR/{id}', 'specialController@destroy');
 // route pour user // 
 route::get('/listprofile', 'UserController@listUser'); 
 route::get('/profile', 'UserController@index'); 
-route::post('chercher' ,'UserController@chercher') ;
+route::get('chercher' ,'UserController@chercher') ;
 Route::post('user/store','UserController@store') ; 
+Route::delete('destroy/user/{id}', 'UserController@destroy'); 
 
 // route pour le doctotr // 
 route::get('/addDoctor', 'doctorController@listD'); 
@@ -45,12 +46,15 @@ Route::post('storePatient','patientsController@store') ;
 Route::DELETE('destroy/{id}', 'patientsController@destroy') ;
 
 // Route pour la fiche de rendez vous // 
-Route::get('fiche/index', 'ficheController@index'); 
+Route::get('fiche/index', 'ficheController@index') ;
+Route::post('fiche/store', 'ficheController@store'); 
+Route::delete('fiche/destroy/{id}','ficheController@destroy');
 
+// Rouite pour Appointemetns // 
 
-Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback') ;
-
+Route::get('appointements/index', 'appointementsController@index'); 
+Route::post('appointements/store', 'appointementsController@store');
+Route::delete('appointements/destroy/{id}', 'appointementsController@destroy');
     
 
 

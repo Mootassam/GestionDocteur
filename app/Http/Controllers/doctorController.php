@@ -31,7 +31,7 @@ class doctorController extends Controller
         $list->avatar= $request->input('avatar'); 
         $list->email= $request->input('email'); 
         $list->password= $request->input('pass'); 
-        $list->specialite_id= $request->get('spec'); 
+        $list->special_id= $request->get('spec'); 
         $list->tel= $request->input('tel'); 
         $list->imgCin= $request->input('cin'); 
         $list->bio= $request->input('pic'); 

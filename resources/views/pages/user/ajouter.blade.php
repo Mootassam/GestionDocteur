@@ -56,35 +56,37 @@
                              <p style="color:red"> {{$item}}</p>         
                                 @endforeach     
                             @endif
-                        
-                            
-                            </div>
-                        @php
-                            $model = ['users','Doctor','Travaille']
-                        @endphp
+                    </div>
+              @php
+                  $model = ['users','Doctor','Travaille'] ;
+                  $maps= ['create','read','Update','Delete'] ; 
+              @endphp
 
                <div class="panel-heading">
                 <ul class="nav nav-tabs nav-justified">
                 @foreach ($model  as $index=>$item)
-    
-
                   <li class="{{$index == 0 ? 'active' :''}} ">
                     <a data-toggle="tab" href="#{{$item}}">@lang($item)</a>
                   </li>
                  @endforeach
+                  
                 </ul>
               </div>
                   
                 <div class="panel-body">
                 <div class="tab-content">
-    @foreach ($model  as $index=>$item)
+                 @foreach ($model  as $index=>$item)
                   <div id="{{$item}}" class="tab-pane {{$index == 0 ? 'active' :''}}">
-                  <label for=""><input type="checkbox" name="permissions[]" value="create_{{$item}}" id=""> @lang('Ajouter')</label>
-                  <label for=""><input type="checkbox" name="permissions[]" value="read_{{$item}}" id=""> Show</label>
-                  <label for=""><input type="checkbox" name="permissions[]" value="update_{{$item}}" id=""> Update</label>
-                  <label for=""><input type="checkbox" name="permissions[]" value="delete_{{$item}}" id=""> Delete</label>
+
+                    @foreach ($maps as $map)
+                  <label for=""><input type="checkbox" name="permissions[]" value="{{$map.'_'.$item}}" id=""> @lang($map)</label>
+                    @endforeach
+
                   </div>
                   @endforeach
+
+                  
+
                 
 
                 

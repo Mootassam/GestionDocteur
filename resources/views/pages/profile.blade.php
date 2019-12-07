@@ -6,11 +6,12 @@
 <div class="row mt">
         <div class="col-md-12">
           <div class="content-panel">
+            @include('pages.messages.msg')
             <table class="table table-striped table-advance table-hover">
               <div class="form-group">
               <div class="col-md-4"><h4><i class="fa fa-angle-right"></i> List de profile  </h4> </div> 
               <div class="col-md-4"> 
-                <form action="{{url('chercher')}}" method="post">
+                <form action="{{url('chercher')}}" method="get">
                    {{ csrf_field() }}
                   <input name="nom" type="text" class="form-control">   
                   </div>
@@ -54,14 +55,25 @@
                   <td> {{$item->password}} </td>
                   <td><span class="label label-info label-mini"> {{$item->created_at}}</span></td>
                   <td>
+
+                    <form action="{{url('destroy/user/'.$item->id)}}" method="post">
+                   {{ csrf_field() }}
+                   {{method_field('DELETE')}}
                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                     <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                
                     <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
+            <center> 
+              @if (Route::has('profile'))
+              {{$list->appends(request()->query())->links()}}
+              @endif
+            </center>  
           </div>
           <!-- /content-panel -->
         </div>
