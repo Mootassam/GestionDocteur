@@ -33,8 +33,9 @@ Route::delete('destroy/user/{id}', 'UserController@destroy');
 
 // route pour le doctotr //
 route::get('/addDoctor', 'doctorController@listD');
-route::post('store', 'doctorController@store');
+route::post('doctor/store', 'doctorController@store');
 route::get('allmedecin','doctorController@index') ;
+route::get('doctor/show','doctorController@show') ;
 route::post('cherhcerM', 'doctorController@chercher') ;
 Route::delete('doctor/delete/{id}', 'doctorController@destroy');
 
@@ -46,6 +47,7 @@ route::post('sotre/travaille', 'travailleController@store');
 Route::get('index', 'patientsController@index' ) ;
 Route::get('create', 'patientsController@create') ;
 Route::post('storePatient','patientsController@store') ;
+Route::put('patient/update/{id}','patientsController@update');
 Route::DELETE('destroy/{id}', 'patientsController@destroy') ;
 
 // Route pour la fiche de rendez vous //

@@ -27,11 +27,11 @@
                 <h6>{{Auth::user()->email}}</h6>
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
                 <br>
-                <form action="{{url('appointements/update/'.$item->id)}}" method="post">
+                <form action="{{url('patient/update/'.$item->id)}}" method="post">
                 @csrf
                 @method('put')
                 <input type="hidden" name="id" value="{{$item->id}}">
-                <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Envoyer une demande de rendez vous </button></p>
+                <p><button type="submit"  class="btn btn-theme"><i class="fa fa-envelope"></i> Envoyer une demande de rendez vous </button></p>
                 </form>
               </div>
               <!-- /col-md-4 -->

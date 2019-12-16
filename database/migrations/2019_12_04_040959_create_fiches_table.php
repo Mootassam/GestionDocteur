@@ -15,7 +15,7 @@ class CreateFichesTable extends Migration
     {
         Schema::create('fiches', function (Blueprint $table) {
             $table->bigIncrements('id');
-             $table->text('observation'); 
+             $table->text('observation');
             $table->text('ordonnace') ;
             $table->timestamps();
         });

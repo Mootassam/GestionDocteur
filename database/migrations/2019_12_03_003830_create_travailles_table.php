@@ -17,10 +17,10 @@ class CreateTravaillesTable extends Migration
 
             $table->bigIncrements('id');
             $table->time('heurDeb') ;
-            $table->time('heurFin'); 
-            $table->text('jours') ; 
+            $table->time('heurFin');
+            $table->text('jours') ;
             $table->timestamps();
-           
+
         });
     }
 

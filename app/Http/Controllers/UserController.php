@@ -12,12 +12,12 @@ class UserController extends Controller
 
 
     public function listUser(){
-        if(!Gate::allows('isAdmin'))
+      /*  if(!Gate::allows('isAdmin'))
         {
              abort(404,"sorry you can not do this action") ;
-        }
+        } */
         $list = User::paginate(5);
-        return view('pages.profile' , ['list' => $list ]) ;
+        return view('pages.profile', compact('list'));
     }
 
     public function chercher(Request $request){

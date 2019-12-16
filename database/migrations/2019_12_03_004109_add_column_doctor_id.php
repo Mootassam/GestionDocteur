@@ -14,8 +14,8 @@ class AddColumnDoctorId extends Migration
     public function up()
     {
         Schema::table('travailles', function (Blueprint $table) {
-            $table->unsignedBigInteger('idD')->after('id'); 
-             $table->foreign('idD')->references('id')->on('doctors'); 
+            $table->unsignedBigInteger('idD')->after('id');
+             $table->foreign('idD')->references('id')->on('doctors');
             //
         });
     }
@@ -28,7 +28,7 @@ class AddColumnDoctorId extends Migration
     public function down()
     {
         Schema::table('travailles', function (Blueprint $table) {
-            $table->dropForeign(['idD']) ; 
+            $table->dropForeign(['idD']) ;
             //
         });
     }

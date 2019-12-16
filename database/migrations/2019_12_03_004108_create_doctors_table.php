@@ -14,27 +14,30 @@ class CreateDoctorsTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            
+
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('special_id'); 
+             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('special_id');
             $table->foreign('special_id')->references('id')->on('specialites');
 
-            $table->string('name'); 
-            $table->string('lastname'); 
-            $table->text('avatar') ; 
+           /* $table->string('name');
+            $table->string('lastname');
+            $table->text('avatar') ;
             $table->string('email') ;
-            $table->string('password'); 
-            $table->text('bio') ; 
+            $table->string('password');
+            $table->text('bio') ;
             $table->integer('tel') ;
-            $table->text('imgCin'); 
-            $table->float('prixVisite'); 
-            $table->integer('active'); 
-            $table->integer('visible'); 
-            $table->text('verifHach'); 
-            $table->string('latitude'); 
-            $table->string('longitude'); 
-            $table->string('remeber_token'); 
-            
+            $table->text('imgCin'); */
+
+            $table->float('prixVisite');
+            $table->integer('active');
+            $table->integer('visible');
+            $table->text('verifHach');
+            $table->string('latitude');
+            $table->string('longitude');
+
+
 
             $table->timestamps();
         });

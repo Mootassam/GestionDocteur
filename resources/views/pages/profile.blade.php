@@ -67,11 +67,12 @@
                   </td>
                 </tr>
                 @endforeach
-         {{ $item->links() }}
+
               </tbody>
 
 
             </table>
+             {{ $list->appends(request()->query())->links() }}
             <center>
               @if (Route::has('profile'))
               {{$list->appends(request()->query())->links()}}

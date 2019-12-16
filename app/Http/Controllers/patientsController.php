@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\User;
 
+use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class patientsController extends Controller
 {
@@ -16,8 +19,9 @@ class patientsController extends Controller
     public function index()
 
     {
-        $list = Patient::all(); 
-     return view('pages.patient',compact('list')) ;
+        $list = Patient::all();
+        $user = User::where('user_type', '=', 'user')->get();
+     return view('pages.patient',compact('list','user')) ;
         //
     }
 
@@ -28,8 +32,8 @@ class patientsController extends Controller
      */
     public function create()
     {
-        return view('pages.addpatient') ; 
-        //
+        return view('pages.addpatient') ;
+          //
     }
 
     /**
@@ -40,21 +44,24 @@ class patientsController extends Controller
      */
     public function store(Request $request)
     {
-  
-            $list = new Patient() ; 
-            $list->name = $request->input('nom'); 
-            $list->lastName = $request->input('prenom'); 
-            $list->email = $request->input('email'); 
-            $list->dateNaiss = $request->input('date'); 
-            $list->numCNSS = $request->input('cnss'); 
+
+            $list = new Patient() ;
+            $list->user_id= $request->get('user_id');
+            $list->name = $request->input('nom');
+            $list->lastName = $request->input('prenom');
+            $list->email = $request->input('email');
+            $list->dateNaiss = $request->input('date');
+            $list->numCNSS = $request->input('cnss');
+            $list->etat= $request->get('etat');
+            $list->rendezVous= $request->get('date');
 
 
-$list->save(); 
-session()->flash('success','le Patient a ete ajouter avec success'); 
+$list->save();
+session()->flash('success','le Patient a ete ajouter avec success');
 
-return redirect('index'); 
+return redirect('index');
 
-        
+
         //
     }
 
@@ -89,6 +96,15 @@ return redirect('index');
      */
     public function update(Request $request, $id)
     {
+        $list = Patient::find($id);
+        $list->user_id = Auth::user()->id ;
+        $list->name = Auth::user()->name ;
+        $list->email= Auth::user()->email;
+        $list->dateNaiss= '';
+        $list->numCNSS= ' ';
+        $list->etat='Attente';
+        $list->rendezVous='';
+        $list->save();
         //
     }
 
@@ -102,9 +118,9 @@ return redirect('index');
     {
 
         $list = Patient::find($id) ;
-        $list->delete(); 
-        return redirect('index'); 
-        
+        $list->delete();
+        return redirect('index');
+
         //
     }
 }

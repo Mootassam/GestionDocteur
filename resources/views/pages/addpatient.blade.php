@@ -1,19 +1,22 @@
      <thead>
             <tr>
+
               <th><i class="fa fa-bullhorn"></i> Nom</th>
               <th><i class="fa fa-bullhorn"></i> Prenom</th>
               <th><i class="fa fa-bullhorn"></i> Email</th>
               <th><i class="fa fa-bullhorn"></i> date de Naissance</th>
+              <th><i class="fa fa-bullhorn"></i> Etat</th>
               <th><i class="fa fa-bullhorn"></i> Num CNSS</th>
               <th></th>
-             
+
             </tr>
             @foreach ($list as $item)
-                <tr> 
+                <tr>
                     <td>{{$item->name}}</td>
                     <td>{{$item->lastName}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->dateNaiss}}</td>
+                    <td><span class="label label-info label-mini">{{$item->etat}}</span></td>
                     <td>{{$item->numCNSS}}</td>
                       <td>
 
@@ -26,11 +29,11 @@
                 </form>
               </td>
 
-                </tr>            
+                </tr>
             @endforeach
-            
-          
-            
-              
+
+
+
+
             </tr>
           </thead>

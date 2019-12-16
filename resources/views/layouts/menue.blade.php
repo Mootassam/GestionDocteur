@@ -334,7 +334,7 @@
 
 
                   <li>
-                    <a href="{{url('appointements/show')}}">
+                    <a href="{{url('doctor/show')}}">
                       <i class="fa fa-map-marker"></i>
                       <span>Chercher les médecins </span>
                       </a>
