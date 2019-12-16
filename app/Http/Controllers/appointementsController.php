@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Fiche;
 use App\Doctor;
 use App\Patient;
 use App\Appointments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class appointementsController extends Controller
 {
@@ -15,12 +17,13 @@ class appointementsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $list= Appointments::all() ;
-        $doctor= Doctor::all(); 
-        $patient = Patient::all(); 
-        $fiche= Fiche::all(); 
+        $doctor= Doctor::all();
+        $patient = Patient::all();
+        $fiche= Fiche::all();
         return view('pages.appointements.index' , compact('list', 'doctor','patient', 'fiche'))  ;
         //
     }
@@ -41,16 +44,19 @@ class appointementsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-   $list = new Appointments(); 
-         $list->idD= $request->get('idD');
-         $list->pid= $request->get('pid');  
-         $list->fid= $request->get('fid'); 
-          $list->etat= $request->get('etat');
-          $list->save(); 
+
+                $list = new Appointments();
+                $list->idD= $request->get('idD');
+                $list->pid= $request->get('pid');
+                $list->fid= $request->get('fid');
+                $list->etat= $request->get('etat');
+
+
+          $list->save();
      session()->flash('success','enregistrement a ete avec success') ;
-     return redirect('appointements/index'); 
+     return redirect('appointements/index');
         //
     }
 
@@ -60,10 +66,18 @@ class appointementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+
+        $list= Appointments::all() ;
+        $doctor= User::where('user_type','=' ,'doctor')->orderBy('name', 'desc')->get();
+        $patient = Patient::all();
+        $fiche= Fiche::all();
+        return view('pages.patient.list' , compact('doctor'))  ;
         //
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -85,6 +99,15 @@ class appointementsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $list= Appointments::find($id) ;
+        dd($request->get('id'));
+        $list->idD=$request->get('id') ;
+        $list->pid= Auth::user()->id;
+        $list->fid= '0';
+        $list->etat= 'attente';
+        $list->save();
+
         //
     }
 
@@ -96,10 +119,10 @@ class appointementsController extends Controller
      */
     public function destroy($id)
     {
-        $list= Appointments::find($id); 
-        $list->delete(); 
-        session()->flash('success',' la suppression a ete effectuer avec success'); 
-        return redirect('appointements/index'); 
+        $list= Appointments::find($id);
+        $list->delete();
+        session()->flash('success',' la suppression a ete effectuer avec success');
+        return redirect('appointements/index');
 
         //
     }

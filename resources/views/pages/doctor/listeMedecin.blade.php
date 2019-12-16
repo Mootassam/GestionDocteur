@@ -10,28 +10,29 @@
       <div class="content-panel">
         <table class="table table-striped table-advance table-hover">
           <div class="form-group">
-          <div class="col-md-2"><h4><i class="fa fa-angle-right"></i> List de profile  </h4> </div> 
-          <div class="col-md-4"> 
+        @include('pages.messages.msg')
+          <div class="col-md-2"><h4><i class="fa fa-angle-right"></i> List de profile  </h4> </div>
+          <div class="col-md-4">
             <form action="{{url('cherhcerM')}}" method="post">
                {{ csrf_field() }}
-              <input name="nom" type="text" class="form-control"> 
+              <input name="nom" type="text" class="form-control">
               @if ($errors->get('nom'))
               @foreach ($errors->get('nom') as $item)
               <p style="color:red"> {{$item}} </p>
-                  
+
               @endforeach
-                  
+
               @endif
-         
+
               </div>
           <div class="col-md-6">
-               <input class="btn btn-success" type="submit" value="Chercher"> 
+               <input class="btn btn-success" type="submit" value="Chercher">
             </form>
 
-            @include('pages.addDoctor')
-            @include('pages.addH')
+            @include('pages.doctor.addDoctor')
+            @include('pages.doctor.addH')
           </div>
-       
+
         </div>
         <br>
         <br>
@@ -45,11 +46,6 @@
               <th><i class="fa fa-bullhorn"></i> tel</th>
               <th><i class="fa fa-bullhorn"></i> N°cin</th>
               <th><i class="fa fa-bullhorn"></i> Prix</th>
-              
-
-            
-          
-            
               <th></th>
             </tr>
           </thead>
@@ -65,13 +61,17 @@
               <td> {{$item->imgCin}} </td>
 
               <td> {{$item->prixVisite}} </td>
-             
-         
+
+
               <td>
+
                 <button class="btn btn-success btn-xs" ><i  class="fa fa-check"></i></button>
-                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-              </td>
+                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"> </i></button>
+       <button   data-toggle="modal" data-target="#delete" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+  @include('pages.doctor.delete')
+
+                </td>
+
             </tr>
             @endforeach
           </tbody>
@@ -83,4 +83,5 @@
   </div>
 
     </section></section>
+
 @endsection

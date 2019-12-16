@@ -1,0 +1,41 @@
+[33mcommit 4e82cebddb68a2f034331a841796d27ce780a18f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Sat Dec 7 02:03:56 2019 +0100
+
+    reglage pages
+
+[33mcommit a47f012e1251ea6031143cc695d529a0f41c5304[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Thu Dec 5 09:07:16 2019 +0100
+
+    permission + laratrust
+
+[33mcommit 1dc8de45b6ed0c29a415ad0abe76156105f8b72f[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Wed Nov 27 02:46:29 2019 +0100
+
+    debut de gestion de permession
+
+[33mcommit a698b29d2f2c6e336c35d9812a12635e3b398288[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Fri Nov 22 21:50:32 2019 +0100
+
+    les specialités
+
+[33mcommit 745c20c471feee0a343869c39dd77b077351f647[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Fri Nov 22 17:42:42 2019 +0100
+
+    foreign
+
+[33mcommit 36f6e38501598ecba01200ab156e85e07900fff7[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Fri Nov 22 16:13:36 2019 +0100
+
+    crete all tables
+
+[33mcommit 503e1f860188a49811ee7cc203dcac735767230a[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: mootassam <mootassame@gmail.com>
+Date:   Fri Nov 22 02:33:10 2019 +0100
+
+    implemnter template

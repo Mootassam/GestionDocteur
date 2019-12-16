@@ -10,8 +10,8 @@
       <div class="content-panel">
         <table class="table table-striped table-advance table-hover">
           <div class="form-group">
-          <div class="col-md-2"><h4><i class="fa fa-angle-right"></i> List des fiches   </h4> </div> 
-          <div class="col-md-4"> 
+          <div class="col-md-2"><h4><i class="fa fa-angle-right"></i> List des fiches   </h4> </div>
+          <div class="col-md-4">
        @include('pages.fiche.add')
           </div>
         </div>
@@ -33,14 +33,15 @@
                 <a href="basic_table.html#"> {{$item->observation}} </a>
               </td>
               <td class="hidden-phone"> {{$item->ordonnace}}</td>
- 
-             
-         
+
+
+
               <td>
+
                 <form action="{{url('fiche/destroy/'.$item->id)}}" method="post">
                   {{ csrf_field() }}
                   {{method_field('DELETE')}}
-                <button class="btn btn-success btn-xs" ><i  class="fa fa-check"></i></button>
+ <button id="newss"  class="btn btn-success btn-xs" ><i  class="fa fa-check"></i></button>
                 <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                 <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                 </form>
@@ -57,3 +58,6 @@
 
     </section></section>
 @endsection
+
+
+

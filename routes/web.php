@@ -16,45 +16,51 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-// route pour specialité // 
+// route pour specialité //
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('GDOCTOR/listSpecial', 'specialController@listSpecial'); 
-Route::post('GDOCTOR/save','specialController@saveList'); 
-route::delete('GDOCTOR/{id}', 'specialController@destroy'); 
+Route::get('GDOCTOR/listSpecial', 'specialController@listSpecial');
+Route::post('GDOCTOR/save','specialController@saveList');
+route::delete('GDOCTOR/{id}', 'specialController@destroy');
 
-// route pour user // 
-route::get('/listprofile', 'UserController@listUser'); 
-route::get('/profile', 'UserController@index'); 
+// route pour user //
+route::get('/listprofile', 'UserController@listUser');
+route::get('/profile', 'UserController@index');
 route::get('chercher' ,'UserController@chercher') ;
-Route::post('user/store','UserController@store') ; 
-Route::delete('destroy/user/{id}', 'UserController@destroy'); 
+Route::post('user/store','UserController@store') ;
+Route::get('user/edit/{id}' ,'UserController@edit' );
+Route::put('user/update/{id}' ,'UserController@update');
+Route::delete('destroy/user/{id}', 'UserController@destroy');
 
-// route pour le doctotr // 
-route::get('/addDoctor', 'doctorController@listD'); 
+// route pour le doctotr //
+route::get('/addDoctor', 'doctorController@listD');
 route::post('store', 'doctorController@store');
 route::get('allmedecin','doctorController@index') ;
 route::post('cherhcerM', 'doctorController@chercher') ;
+Route::delete('doctor/delete/{id}', 'doctorController@destroy');
 
-//route pour le jour de travaille // 
-route::get('jour/index','travailleController@index'); 
+//route pour le jour de travaille //
+route::get('jour/index','travailleController@index');
 route::post('sotre/travaille', 'travailleController@store');
 
-// Route pour le Patient  // 
-Route::get('index', 'patientsController@index' ) ; 
-Route::get('create', 'patientsController@create') ; 
-Route::post('storePatient','patientsController@store') ; 
+// Route pour le Patient  //
+Route::get('index', 'patientsController@index' ) ;
+Route::get('create', 'patientsController@create') ;
+Route::post('storePatient','patientsController@store') ;
 Route::DELETE('destroy/{id}', 'patientsController@destroy') ;
 
-// Route pour la fiche de rendez vous // 
+// Route pour la fiche de rendez vous //
 Route::get('fiche/index', 'ficheController@index') ;
-Route::post('fiche/store', 'ficheController@store'); 
+Route::post('fiche/store', 'ficheController@store');
 Route::delete('fiche/destroy/{id}','ficheController@destroy');
 
-// Rouite pour Appointemetns // 
-
-Route::get('appointements/index', 'appointementsController@index'); 
+// Route pour Appointemetns //
+Route::get('appointements/index', 'appointementsController@index');
+Route::get('appointements/show', 'appointementsController@show');
 Route::post('appointements/store', 'appointementsController@store');
+Route::put('appointements/update/{id}', 'appointementsController@update');
 Route::delete('appointements/destroy/{id}', 'appointementsController@destroy');
-    
+
+
+
 
 

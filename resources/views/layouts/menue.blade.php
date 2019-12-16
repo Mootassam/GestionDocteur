@@ -228,7 +228,7 @@
               <ul class="nav pull-right top-menu">
 
                   <li>
-                  
+
                           <a  class="logout" href="{{ url('/logout') }}"
                               onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
@@ -238,9 +238,9 @@
                           <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                               {{ csrf_field() }}
                           </form>
-                    
-              
-              
+
+
+
               </ul>
             </div>
           </header>
@@ -256,11 +256,14 @@
                 <p class="centered"><a href="{{url('profile')}}"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
                 <h5 class="centered"> </h5>
                 <li class="mt">
-                  <a class="active" href="index.html">
+                  <a class="active" href="{{url('home')}}">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                     </a>
                 </li>
+
+                  @can('isAdmin')
+
                   <li>
                   <a href="{{url('allmedecin')}} ">
                     <i class="fa fa-envelope"></i>
@@ -268,66 +271,58 @@
                     <span class="label label-theme pull-right mail-info">2</span>
                     </a>
                 </li>
-    <li>
+                <li>
                     <a href="{{url('GDOCTOR/listSpecial')}}">
                       <i class="fa fa-map-marker"></i>
                       <span>Gérer les spécialités </span>
                       </a>
-                  </li>
+                </li>
+                <li>
+                <a href="{{url('listprofile')}}">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Gérer le profil </span>
+                    </a>
+                </li>
+                  @endcan
+
+
+
+                  @can('isDoc', Model::class)
                 <li class="sub-menu">
                   <a href="{{url('fiche/index')}}">
                     <i class="fa fa-desktop"></i>
                     <span>Gérer Fiche_rendez_vous</span>
                     </a>
-              
                 </li>
                 <li class="sub-menu">
                   <a href="javascript:;">
                     <i class="fa fa-cogs"></i>
                     <span>Consulter les statistiques</span>
                     </a>
-                
                 </li>
                 <li class="sub-menu">
                   <a href=" {{url ('jour/index')}} ">
                     <i class="fa fa-book"></i>
                     <span>Gérer l’horaire de travail</span>
                     </a>
-                
                 </li>
                 <li class="sub-menu">
                   <a href="{{url('index')}}">
                     <i class="fa fa-tasks"></i>
                     <span>Gérer les dossiers patients</span>
                     </a>
-              
                 </li>
-                <li class="sub-menu">
-                  <a href="javascript:;">
-                    <i class="fa fa-th"></i>
-                    <span>Uploader CIN</span>
-                    </a>
-               
-                </li>
-              
                 <li class="sub-menu">
                   <a href="javascript:;">
                     <i class=" fa fa-bar-chart-o"></i>
                     <span>Consulter l’historique des rendez-vous</span>
                     </a>
-                  <ul class="sub">
-                    <li><a href="morris.html">Morris</a></li>
-                    <li><a href="chartjs.html">Chartjs</a></li>
-                    <li><a href="flot_chart.html">Flot Charts</a></li>
-                    <li><a href="xchart.html">xChart</a></li>
-                  </ul>
                 </li>
                 <li class="sub-menu">
                   <a href="javascript:;">
                     <i class="fa fa-comments-o"></i>
                     <span>Prendre un rendez-vous</span>
                     </a>
-                 
                 </li>
                 <li>
                   <a href="{{url('appointements/index')}}">
@@ -335,30 +330,21 @@
                     <span>Consulter l’état des RDV </span>
                     </a>
                 </li>
-               
+                @endcan
+
+
                   <li>
-                    <a href="google_maps.html">
+                    <a href="{{url('appointements/show')}}">
                       <i class="fa fa-map-marker"></i>
-                      <span>Vérifier les médecins </span>
+                      <span>Chercher les médecins </span>
                       </a>
                   </li>
-          
-              <li>
-              
-                    
-              
-                <a href="{{url('listprofile')}}">
-                  <i class="fa fa-map-marker"></i>
-                  <span>Gérer le profil </span>
-                  </a>
-                
-              </li>  
-                 
+
               </ul>
               <!-- sidebar menu end-->
             </div>
           </aside>
-    
+
 @yield('content')
 
 
@@ -408,5 +394,5 @@
   <script src="{{asset('lib/calendar-conf-events.js')}}"></script>
 
 <script src="{{asset('lib/advanced-form-components.js')}}"></script>
- 
+
 </html>
